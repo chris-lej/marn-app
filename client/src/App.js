@@ -16,7 +16,7 @@ class App extends React.Component {
   }
 
   getBlogPost = () => {
-    axios.get('http://localhost:5000/api')
+    axios.get('https://mymernappleje.herokuapp.com//api')
       .then((response) => {
         const data = response.data
         this.setState({ posts: data})
@@ -51,7 +51,7 @@ class App extends React.Component {
     };
 
     axios({
-      url: 'http://localhost:5000/api/save',
+      url: 'https://mymernappleje.herokuapp.com/api/save',
       method: 'POST',
       data: payload
     })
