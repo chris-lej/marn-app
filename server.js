@@ -10,15 +10,15 @@ const PORT = process.env.PORT || 8080;
 
 const routes = require('./routes/api')
 
-mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/mern_youtube', {
+const mongoDBURI = process.env.MONGODB_URI
+
+mongoose.connect(mongoDBURI ||'mongodb://localhost/mern_youtube', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 mongoose.connection.on('connected', () => {
   console.log('Mongoose Is Connected!!')
 });
-
-console.log(process.env.MONGODB_URI)
 
 // Data parsing so the data is available to the routes
 app.use(express.json());
