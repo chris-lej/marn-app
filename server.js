@@ -10,9 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 const routes = require('./routes/api')
 
-const banana = 'mongodb+srv://clejeune:laias123@cluster0-glbkd.mongodb.net/test?retryWrites=true&w=majority'
-
-mongoose.connect(banana, {
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/mern_youtube', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
