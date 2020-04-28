@@ -18,6 +18,8 @@ mongoose.connection.on('connected', () => {
   console.log('Mongoose Is Connected!!')
 });
 
+console.log(process.env.MONGODB_URI)
+
 // Data parsing so the data is available to the routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
