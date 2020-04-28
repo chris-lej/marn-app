@@ -16,10 +16,10 @@ class App extends React.Component {
   }
 
   getBlogPost = () => {
-    axios.get('https://mymernappleje.herokuapp.com//api')
+    axios.get('/api')
       .then((response) => {
         const data = response.data
-        this.setState({ posts: data})
+        this.setState({ posts: data })
         console.log('Data received')
       })
       .catch((error) => {
@@ -35,7 +35,7 @@ class App extends React.Component {
   };
 
   handleChange = ({ target }) => {
-    const {name, value} = target;
+    const { name, value } = target;
 
     this.setState({
       [name]: value
@@ -51,7 +51,7 @@ class App extends React.Component {
     };
 
     axios({
-      url: 'https://mymernappleje.herokuapp.com/api/save',
+      url: '/api/save',
       method: 'POST',
       data: payload
     })
@@ -60,11 +60,11 @@ class App extends React.Component {
         this.resetUserInputs();
         this.getBlogPost();
       })
-      .catch(() => console.log('That failed!'))
+      .catch(() => console.log('Internal server error'))
   };
 
   displayBlogPosts = (posts) => {
-    if (!posts.length) return <div>No post yet</div>;
+    if (!posts.length) return <div>No posts yet</div>;
 
     return posts.map((post, index) => (
       <div key={index} className="blog-posts_display">
@@ -75,7 +75,8 @@ class App extends React.Component {
   };
 
   render() {
-    console.log('State', this.state)
+    console.log('State', this.state);
+
     return (
       <div className="app">
         <h2>

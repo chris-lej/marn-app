@@ -5,11 +5,7 @@ const router = express.Router()
 const BlogPost = require('../models/blogPost')
 
 // Routes
-router.get('/api', (req, res) => {
-  const data = {
-    username: 'clejeune',
-    age: 32
-  };
+router.get('/', (req, res) => {
 
   BlogPost.find({ })
     .then((data) => {
@@ -21,7 +17,7 @@ router.get('/api', (req, res) => {
     })
 });
 
-router.post('/api/save', (req, res) => {
+router.post('/save', (req, res) => {
   console.log('Request body', req.body);
   const data = req.body;
 
@@ -38,7 +34,7 @@ router.post('/api/save', (req, res) => {
   });
 });
 
-router.get('/api/name', (req, res) => {
+router.get('/name', (req, res) => {
   const data = {
     username: 'bananaman',
     age: 32
@@ -46,4 +42,4 @@ router.get('/api/name', (req, res) => {
   res.json(data);
 });
 
-module.exports = router
+module.exports = router;
